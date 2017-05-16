@@ -57,7 +57,13 @@ public final class App {
         log.info(EVENTARC_MARKER, () -> gson.toJson(evt1));
 
         // Scenario 5: EventARC dedicated logger, lambda, separate Appender
-        // TODO implement
+        Logger eaLog = LogManager.getLogger("eventarc");
+        final Map<String,String> evt2 = new LinkedHashMap<>();
+        evt2.put("timestamp", Instant.now().toString());
+        evt2.put("library", "log4j-eventarc-logger");
+        evt2.put("soccer", "ball");
+        evt2.put("widget", "squidulum");
+        eaLog.info("{}", () -> gson.toJson(evt2));
 
         // Scenario 6: root logger, custom EventMessage, JDBC Appender
         //             H2+HikariCP -OR- stimpy's MySQL+HikariCP into blob/JSON column

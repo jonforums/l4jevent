@@ -11,7 +11,8 @@
       <MarkerFilter marker="EVENTARC" onMatch="ACCEPT"/>
       <PatternLayout charset="ISO-8859-1" pattern="%m%n"/>
     </File>
-    <!-- TODO add other appenders for each scenario -->
+    <File name="scenario-5" filename="logs/eventarc-logger-events">
+    </File>
 
     <Console name="stdout" target="SYSTEM_OUT">
       <PatternLayout charset="ISO-8859-1" pattern="%m%n"/>
@@ -24,5 +25,9 @@
       <AppenderRef ref="scenario-1:3"/>
       <AppenderRef ref="scenario-4"/>
     </Root>
+    <Logger name="eventarc" level="INFO" additivity="false">
+      <AppenderRef ref="stdout"/>
+      <AppenderRef ref="scenario-5"/>
+    </Logger>
   </Loggers>
 </Configuration>
