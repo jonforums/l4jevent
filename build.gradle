@@ -1,0 +1,42 @@
+plugins {
+    id 'application'
+}
+compileJava.options.compilerArgs = ['-Xlint:all']
+
+version = '0.5.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+mainClassName = 'App'
+
+ext {
+    gsonVersion = '2.8.0'
+    log4jVersion = '2.8.2'
+    mailVersion = '1.5.6'
+    slf4jVersion = '1.7.25'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.google.code.gson:gson:${gsonVersion}"
+
+    compile "com.sun.mail:mailapi:${mailVersion}"
+    compile "com.sun.mail:smtp:${mailVersion}"
+
+    compile "org.apache.logging.log4j:log4j-api:${log4jVersion}"
+    compile "org.apache.logging.log4j:log4j-core:${log4jVersion}"
+    compile "org.apache.logging.log4j:log4j-slf4j-impl:${log4jVersion}"
+
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
+}
+
+distTar {
+    extension 'tar.gz'
+    compression Compression.GZIP
+}
+
+// vim: et
