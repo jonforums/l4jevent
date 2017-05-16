@@ -7,6 +7,8 @@ import com.google.gson.Gson;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Marker;
+import org.apache.logging.log4j.MarkerManager;
 
 import org.apache.logging.log4j.util.StringBuilderFormattable;
 
@@ -26,7 +28,6 @@ public final class App {
         evt.put("woof", "grrr");
         log.info("{}", () -> gson.toJson(evt));
 
-
         // Scenario 2: root logger, custom EventMessage
         Map<String,String> event = new LinkedHashMap<>();
         event.put("timestamp", Instant.now().toString());
@@ -45,17 +46,24 @@ public final class App {
         event.put("ha", "blah");
         slf4j.info("{}", gson.toJson(event));
 
-        // Scenario 3: root logger with Marker, MarkerFilter, custom EventMessage, separate Appender
-        // TODO implement, confirm also handles lambdas
+        // Scenario 4: root logger with Marker, MarkerFilter, custom EventMessage,
+        //             separate filtering Appender
+        Marker EVENTARC_MARKER = MarkerManager.getMarker("EVENTARC");
+        final Map<String,String> evt1 = new LinkedHashMap<>();
+        evt1.put("timestamp", Instant.now().toString());
+        evt1.put("library", "log4j-marker");
+        evt1.put("wolf", "paw");
+        evt1.put("moo", "lu");
+        log.info(EVENTARC_MARKER, () -> gson.toJson(evt1));
 
-        // Scenario 4: EventARC dedicated logger, lambda, separate Appender
+        // Scenario 5: EventARC dedicated logger, lambda, separate Appender
         // TODO implement
 
-        // Scenario 5: root logger, custom EventMessage, JDBC Appender
+        // Scenario 6: root logger, custom EventMessage, JDBC Appender
         //             H2+HikariCP -OR- stimpy's MySQL+HikariCP into blob/JSON column
         // TODO implement, confirm also handles lambdas
 
-        // Scenario 6: root logger, custom EventMessage, SMTP Appender and simple email body
+        // Scenario 7: root logger, custom EventMessage, SMTP Appender and simple email body
         // TODO implement, confirm also handles lambdas
     }
 
