@@ -12,6 +12,7 @@
       <PatternLayout charset="ISO-8859-1" pattern="%m%n"/>
     </File>
     <File name="scenario-5" filename="logs/eventarc-logger-events">
+      <PatternLayout charset="ISO-8859-1" pattern="%m%n"/>
     </File>
 
     <Console name="stdout" target="SYSTEM_OUT">
