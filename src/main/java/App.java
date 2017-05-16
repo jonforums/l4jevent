@@ -46,8 +46,7 @@ public final class App {
         event.put("ha", "blah");
         slf4j.info("{}", gson.toJson(event));
 
-        // Scenario 4: root logger with Marker, MarkerFilter, custom EventMessage,
-        //             separate filtering Appender
+        // Scenario 4: root logger with Marker, MarkerFilter, separate filtering Appender
         Marker EVENTARC_MARKER = MarkerManager.getMarker("EVENTARC");
         final Map<String,String> evt1 = new LinkedHashMap<>();
         evt1.put("timestamp", Instant.now().toString());
