@@ -3,11 +3,9 @@
 <Configuration status="WARN">
   <Appenders>
     <RandomAccessFile name="scenario-1:3" fileName="logs/events">
-      <MarkerFilter marker="EVENTARC" onMatch="DENY" onMismatch="NEUTRAL"/>
       <PatternLayout charset="ISO-8859-1" pattern="%m%n"/>
     </RandomAccessFile>
     <RandomAccessFile name="scenario-4" filename="logs/marker-appender-filtered-events">
-      <MarkerFilter marker="EVENTARC" onMatch="ACCEPT"/>
       <PatternLayout charset="ISO-8859-1" pattern="%m%n"/>
     </RandomAccessFile>
     <RandomAccessFile name="scenario-5" filename="logs/eventarc-logger-events">
@@ -22,8 +20,12 @@
   <Loggers>
     <Root level="INFO">
       <AppenderRef ref="stdout"/>
-      <AppenderRef ref="scenario-1:3"/>
-      <AppenderRef ref="scenario-4"/>
+      <AppenderRef ref="scenario-1:3">
+        <MarkerFilter marker="EVENTARC" onMatch="DENY" onMismatch="NEUTRAL"/>
+      </AppenderRef>
+      <AppenderRef ref="scenario-4">
+        <MarkerFilter marker="EVENTARC" onMatch="ACCEPT"/>
+      </AppenderRef>
     </Root>
     <Logger name="eventarc" level="INFO" additivity="false">
       <AppenderRef ref="stdout"/>
