@@ -10,7 +10,7 @@ targetCompatibility = 1.8
 mainClassName = 'App'
 
 ext {
-    gsonVersion = '2.8.0'
+    gsonVersion = '2.8.1'
     log4jVersion = '2.8.2'
     mailVersion = '1.5.6'
     slf4jVersion = '1.7.25'
@@ -37,6 +37,12 @@ dependencies {
 distTar {
     extension 'tar.gz'
     compression Compression.GZIP
+}
+
+task wrapper(type: Wrapper) {
+    description 'Creates a gradle wrapper for this project'
+
+    gradleVersion = '4.1'
 }
 
 // vim: et
