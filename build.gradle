@@ -1,17 +1,16 @@
 plugins {
     id 'application'
 }
-compileJava.options.compilerArgs = ['-Xlint:all']
 
 version = '0.5.0'
 sourceCompatibility = 1.8
-targetCompatibility = 1.8
+compileJava.options.compilerArgs = ['-Xlint:all']
 
 mainClassName = 'App'
 
 ext {
     gsonVersion = '2.8.1'
-    log4jVersion = '2.8.2'
+    log4jVersion = '2.9.0'
     mailVersion = '1.5.6'
     slf4jVersion = '1.7.25'
 }
