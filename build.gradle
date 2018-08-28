@@ -41,7 +41,7 @@ distTar {
 task wrapper(type: Wrapper) {
     description 'Creates a gradle wrapper for this project'
 
-    gradleVersion = '4.9'
+    gradleVersion = '4.10'
 }
 
 // vim: et
